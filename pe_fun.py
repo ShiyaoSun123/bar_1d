@@ -13,8 +13,8 @@ def pe_fun(taue, nen, xe, nipt):
         pe = pe + (txi * jac * wts[i]) * N.T
     return pe
 
-xe = np.array([0,5,10]).T
-taue = np.array([1,2,1]).T
+xe = np.array([0, 10, 5]).T
+taue = np.array([1, 1, 1]).T
 nen = 3
 nipt = 2
 
