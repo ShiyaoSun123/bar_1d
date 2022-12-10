@@ -15,10 +15,10 @@ def pe_fun(taue, nen, xe, nipt):
     return pe
 
 
-xe = np.array([0, 10, 5]).T
+xe = np.array([0, 1, 0.5]).T
 taue = np.array([1, 1, 1]).T
 nen = 3
-nipt = 2
+nipt = 3
 
 pe = pe_fun(taue, nen, xe, nipt)
 
