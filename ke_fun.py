@@ -17,7 +17,7 @@ def ke_fun(xe, nipt, E, A):
 E = 1
 A = 1
 nipt = 1
-xe = np.array([0,1]).reshape((1,-1)).T
+xe = np.array([0,1]).T
 
 ke = ke_fun(xe, nipt, E, A)
 
