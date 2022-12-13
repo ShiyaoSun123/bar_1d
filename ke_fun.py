@@ -21,4 +21,4 @@ xe = np.array([0,1]).T
 
 ke = ke_fun(xe, nipt, E, A)
 
-end
+

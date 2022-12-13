@@ -7,7 +7,7 @@ from shape_fun import shape_fun
 def pe_fun(taue, nen, xe, nipt):
     wts, xk = guass_1d(nipt)
     order = nen - 1
-    pe = np.zeros((1, nen))
+    pe = np.zeros((nen, 1))
     for i in range(nipt):
         N, _, jac = shape_fun(xk[i], order, xe)
         txi = N @ taue
@@ -15,11 +15,11 @@ def pe_fun(taue, nen, xe, nipt):
     return pe
 
 
-xe = np.array([0, 1, 0.5]).T
-taue = np.array([1, 1, 1]).T
-nen = 3
-nipt = 3
+# xe = np.array([0, 1, 0.5])
+#
+# nen = 3
+# nipt = 2
+# taue = 5*np.ones((nen, 1))
+# pe = pe_fun(taue, nen, xe, nipt)
 
-pe = pe_fun(taue, nen, xe, nipt)
 
-a = 1
