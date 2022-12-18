@@ -28,19 +28,20 @@ def solver_1Dbar(nele, nipt, L, E, A, supp_dof,u_supp, ID, taue):
     for i in range(nele):
         coordM, conn, LM = mesh_gen(L, nele, nipt, ID)
         xe = coordM[:, i].flatten()
-        ke = ke_fun(xe, nipt, E, A).flatten()
+        ke = ke_fun(xe, nipt, E, A)
         pe = pe_fun(taue, nen, xe, nipt)
 
         P[LM[:, i]] = pe + P[LM[:, i]]
         Pf = P[free_dof]
 
+        #K[slice_fun(LM[:, i], LM[:, i])] = ke + K[slice_fun(LM[:, i], LM[:, i])]
+        K[np.ix_(LM[:, i], LM[:, i])] = ke + K[np.ix_(LM[:, i], LM[:, i])]
 
-        K[slice_fun(LM[:, i], LM[:, i])] = ke + K[slice_fun(LM[:, i], LM[:, i])]
+        Kff = K[np.ix_(free_dof, free_dof)]
 
-        Kff = K[slice_fun(free_dof, free_dof)].reshape(free_dof.shape[0], free_dof.shape[0])
-        Kss = K[slice_fun(supp_dof, supp_dof)].reshape(supp_dof.shape[0], supp_dof.shape[0])
-        Kfs = K[slice_fun(free_dof, supp_dof)].reshape(free_dof.shape[0], supp_dof.shape[0])
-        Ksf = K[slice_fun(supp_dof, free_dof)].reshape(supp_dof.shape[0], free_dof.shape[0])
+        Kss = K[np.ix_(supp_dof, supp_dof)]
+        Kfs = K[np.ix_(free_dof, supp_dof)]
+        Ksf = K[np.ix_(supp_dof, free_dof)]
 
     Uf = inv(Kff) @ (Pf - Kss @ u_supp)
 
@@ -58,6 +59,12 @@ A = 1
 
 supp_dof = np.array([0])
 u_supp = np.array([0])
+
+
+
+
+
+
 ID = np.arange(nele * nipt + 1)
 
 Uf = solver_1Dbar(nele, nipt, L, E, A, supp_dof,u_supp, ID, taue)
