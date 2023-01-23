@@ -13,7 +13,6 @@ def mesh_gen(L, nele, order, ID):
     coord_int = np.arange(0, L+dx, dx)
     coord_int = np.delete(coord_int, np.arange(0, coord_int.size, order))
 
-\
 
     coord = np.append(coord_ext, coord_int)
 
@@ -52,4 +51,6 @@ def mesh_gen(L, nele, order, ID):
 # L = 10
 # ID = np.flip(np.arange(nele * order + 1))
 # coordM, conn, LM = mesh_gen(L ,nele ,order, ID)
+#
+# end
 

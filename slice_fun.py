@@ -12,8 +12,8 @@ def slice_fun(row_idx, col_idx):
     return li1, li2
 
 
-# row_idx = np.array([1, 2, 3])
-# col_idx = np.array([0])
+# row_idx = np.array([6, 5, 2])
+# col_idx = np.array([6, 5, 2])
 #
 # li1, li2 = slice_fun(row_idx, col_idx)
 # end
