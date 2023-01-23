@@ -65,4 +65,4 @@ ID = np.arange(nele * nipt + 1)
 Uf = solver_1Dbar(nele, nipt, L, E, A, supp_dof,u_supp, ID, taue)
 
 
-end
+
